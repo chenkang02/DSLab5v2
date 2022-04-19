@@ -38,14 +38,39 @@ public class List<E> extends Node<E> {
         }
         
         else{
+            int index = 0;
             Node<E> current = head;
-            
-            for(int i = 0; i < size - 2; i++){
+            for(int i = 0; i < size; i++){
+                if(current.element.equals(e)){
+                    break;
+                }
                 current = current.next;
+                index++;
             }
-            
-            tail = current;
-            tail.next = null;
+            System.out.println(current.element);
+            if(current.equals(head)){
+                System.out.println("a");
+                head = current.next;
+            }
+            else if(current.equals(tail)){
+                System.out.println("b");
+                Node<E> temp = head;
+                for(int i = 0; i < size - 2; i++){
+                    temp = temp.next;
+                }
+                tail = temp.next;
+                tail.next = null; 
+            }
+            else{
+                System.out.println("c");
+                Node<E> temp = head;
+                System.out.println(index);
+                for(int i = 0; i < index - 1; i++){
+                    temp = temp.next;
+                }
+                System.out.println(temp.element);
+                temp.next = current.next;
+            }
             size--;
         }
     }
@@ -87,10 +112,8 @@ public class List<E> extends Node<E> {
                 break;
             }
             index++;
-            System.out.println("A");
             temp = temp.next;
         }
-        System.out.println(index);
         
         if (index > size) {
             throw new NoSuchElementException("Name not found.");
@@ -106,7 +129,6 @@ public class List<E> extends Node<E> {
             for(int i = 0; i < index - 1; i++){
                 temp = temp.next;
             }
-            System.out.println(temp.element);
             newNode.next = (temp.next).next;
             temp.next = newNode;
             }

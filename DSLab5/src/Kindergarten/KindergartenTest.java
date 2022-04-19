@@ -66,6 +66,7 @@ public class KindergartenTest {
             System.out.println("The number of updated student is: " + name.getSize());
             System.out.println("The updated students list is: ");
             name.printList();
+            System.out.println("");
             System.out.println("Do you want to remove any of your student name? Enter 'y' for yes, 'n' to proceed.");
             decision1 = sc.nextLine();
         }
