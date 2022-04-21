@@ -33,21 +33,19 @@ public class KindergartenTest {
         String decision = sc.nextLine();
         
         //key rename
-        while(!decision.equals("n")){
+        while (!decision.equals("n") && decision.equals("r")) {
             System.out.println("Enter the existing student name that you want to rename: ");
             String name1 = sc.nextLine();
-            
-            if(name.contains(name1)){
-                System.out.println("Enter the new name: ");
-                String newName = sc.nextLine();
-                name.replace(name1, newName);
-                System.out.println("The new student list is: ");
-                name.printList();
-                System.out.println("");
-                System.out.println("All the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed.");
-                decision = sc.nextLine();
-            }
-            
+
+            System.out.println("Enter the new name: ");
+            String newName = sc.nextLine();
+            name.replace(name1, newName);
+            System.out.println("The new student list is: ");
+            name.printList();
+            System.out.println("");
+            System.out.println("All the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed.");
+            decision = sc.nextLine();
+
         }
         
         System.out.println("Do you want to remove any of your student name? Enter 'y' for yes, 'n' to proceed.");

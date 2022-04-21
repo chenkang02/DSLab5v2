@@ -107,7 +107,7 @@ public class List<E> extends Node<E> {
         int index = 0;
         Node<E> temp = head;
         
-        for(int i = 0; i < size - 1; i++){
+        for(int i = 0; i < size; i++){
             if(temp.element.equals(e)){
                 break;
             }
@@ -115,7 +115,7 @@ public class List<E> extends Node<E> {
             temp = temp.next;
         }
         
-        if (index > size) {
+        if (temp == null) {
             throw new NoSuchElementException("Name not found.");
         }
         else{
