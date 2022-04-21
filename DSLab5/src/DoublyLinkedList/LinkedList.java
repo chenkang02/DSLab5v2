@@ -21,6 +21,8 @@ public class LinkedList<E> extends Node<E>{
     }
     
     //public Node(E element, Node<E> next, Node<E> prev){
+    
+    //add a node at the beginning of the linked list 
     public void addFirst(E e){
         Node<E> first = new Node<E>(e, head, null);
         if(head != null){
@@ -33,7 +35,9 @@ public class LinkedList<E> extends Node<E>{
         size++;
         System.out.println("adding " + e);
     }
-
+    
+    
+    //add a node at the end of the linked list 
     public void addLast(E e) {
         Node<E> last = new Node<E>(e, null, tail);
         if (tail != null) {
@@ -48,6 +52,8 @@ public class LinkedList<E> extends Node<E>{
 
     }
     
+    
+    //add a node at any given index 
     public void add(E e, int index) {
 
         if (index < 0 || index > size) {
@@ -72,7 +78,9 @@ public class LinkedList<E> extends Node<E>{
         
 
     }
-
+    
+    
+    //remove the first node and return the element of the node 
     public E removeFirst() {
         Node<E> temp = head;
         if (head == null) {
@@ -86,6 +94,8 @@ public class LinkedList<E> extends Node<E>{
         return temp.element;
     }
     
+    
+    //remove the last node and return the element of the node 
     public E removeLast(){
         Node<E> temp = tail;
         if(tail == null){
@@ -100,6 +110,8 @@ public class LinkedList<E> extends Node<E>{
         return temp.element;
     }
     
+    
+    //remove the node at any given index and return the element of the node 
     public E remove(int index){
         if(index < 0 || index > size){
             throw new IndexOutOfBoundsException();
@@ -129,6 +141,8 @@ public class LinkedList<E> extends Node<E>{
         return element;
     }
     
+    
+    //iterate the entire linked list from the beginning to the end and print out the element of each node 
     public void iterateForward(){
         System.out.println("iterating forward...");
         
@@ -142,7 +156,7 @@ public class LinkedList<E> extends Node<E>{
         
     }
     
-    
+    //iterate the entire linked list from the end to the beginning and print out the element of each node 
     public void iterateBackward(){
         System.out.println("Iterating backward...");
         
@@ -159,6 +173,7 @@ public class LinkedList<E> extends Node<E>{
         return size;
     }
     
+    //clear the whole linked list 
     public void clear() {
         Node<E> temp = head;
         do {
