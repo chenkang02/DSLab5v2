@@ -30,10 +30,14 @@ public class KindergartenTest {
         System.out.println("The number of students entered is : " + name.getSize());
         
         System.out.println("All the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed.");
-        String decision = sc.nextLine();
+        
+        String decision = "";
         
         //key rename
-        while (!decision.equals("n") && decision.equals("r")) {
+        while (true) {
+            decision = sc.nextLine();
+            if(decision.equals("n")){break;}
+            else if(decision.equals("r")){
             System.out.println("Enter the existing student name that you want to rename: ");
             String name1 = sc.nextLine();
 
@@ -44,14 +48,17 @@ public class KindergartenTest {
             name.printList();
             System.out.println("");
             System.out.println("All the names entered are correct? Enter 'r' to rename the student name, 'n' to proceed.");
-            decision = sc.nextLine();
+            }
+            else{
+                System.out.println("invalid input.");
+            }
 
         }
         
         System.out.println("Do you want to remove any of your student name? Enter 'y' for yes, 'n' to proceed.");
         String decision1 = sc.nextLine();
         
-        while(!decision1.equals("n")){
+        while(!decision1.equals("n") && decision.equals("y")){
             System.out.println("Enter a student name to remove: ");
             String name2 = sc.nextLine();
             

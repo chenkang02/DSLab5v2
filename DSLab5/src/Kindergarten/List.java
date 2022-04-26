@@ -11,61 +11,50 @@ import java.util.NoSuchElementException;
  * @author CHEN KANG
  */
 public class List<E> extends Node<E> {
-    
-    Node<E> head; 
+
+    Node<E> head;
     Node<E> tail;
     int size = 0;
-    
-    public void add(E e){
-        
+
+    public void add(E e) {
         Node<E> newNode = new Node<E>(e);
-        if (tail == null){
+        if (tail == null) {
             head = newNode;
             tail = head;
-        }
-        
-        else{
+        } else {
             tail.next = newNode;
             tail = tail.next;
         }
-        
         size++;
     }
-     
-    public void removeElement(E e){
-        if(tail == null){
+
+    public void removeElement(E e) {
+        if (tail == null) {
             throw new NoSuchElementException("Name not found.");
-        }
-        
-        else{
+        } else {
             int index = 0;
             Node<E> current = head;
-            for(int i = 0; i < size; i++){
-                if(current.element.equals(e)){
+            for (int i = 0; i < size; i++) {
+                if (current.element.equals(e)) {
                     break;
                 }
                 current = current.next;
                 index++;
             }
             System.out.println(current.element);
-            if(current.equals(head)){
-                System.out.println("a");
+            if (current.equals(head)) {
                 head = current.next;
-            }
-            else if(current.equals(tail)){
-                System.out.println("b");
+            } else if (current.equals(tail)) {
                 Node<E> temp = head;
-                for(int i = 0; i < size - 2; i++){
+                for (int i = 0; i < size - 2; i++) {
                     temp = temp.next;
                 }
                 tail = temp.next;
-                tail.next = null; 
-            }
-            else{
-                System.out.println("c");
+                tail.next = null;
+            } else {
                 Node<E> temp = head;
                 System.out.println(index);
-                for(int i = 0; i < index - 1; i++){
+                for (int i = 0; i < index - 1; i++) {
                     temp = temp.next;
                 }
                 System.out.println(temp.element);
@@ -74,26 +63,26 @@ public class List<E> extends Node<E> {
             size--;
         }
     }
-    
-    public void printList(){
+
+    public void printList() {
         Node<E> current = head;
-        
-        for(int i = 0; i < size - 1; i++){
+
+        for (int i = 0; i < size - 1; i++) {
             System.out.print(current.element + ", ");
             current = current.next;
         }
         System.out.print(current.element + ".");
-        
+
     }
-    
-    public int getSize(){
+
+    public int getSize() {
         return size;
     }
-    
+
     public boolean contains(E e) {
         Node<E> current = head;
 
-        for (int i = 0; i < size; i++) {
+        while (current != null) {
             if (current.element.equals(e)) {
                 return true;
             }
@@ -102,37 +91,40 @@ public class List<E> extends Node<E> {
 
         return false;
     }
-    
-    public void replace(E e, E newE){
+
+    public void clear() {
+        head = tail = null;
+        size = 0;
+    }
+
+    public void replace(E e, E newE) {
         int index = 0;
         Node<E> temp = head;
-        
-        for(int i = 0; i < size; i++){
-            if(temp.element.equals(e)){
+
+        for (int i = 0; i < size; i++) {
+            if (temp.element.equals(e)) {
                 break;
             }
             index++;
             temp = temp.next;
         }
-        
+
         if (temp == null) {
             throw new NoSuchElementException("Name not found.");
-        }
-        else{
+        } else {
             temp = head;
             Node<E> newNode = new Node<E>(newE);
-            if(index == 0){
+            if (index == 0) {
                 newNode.next = head.next;
-                head = newNode;  
-            }
-            else{
-            for(int i = 0; i < index - 1; i++){
-                temp = temp.next;
-            }
-            newNode.next = (temp.next).next;
-            temp.next = newNode;
+                head = newNode;
+            } else {
+                for (int i = 0; i < index - 1; i++) {
+                    temp = temp.next;
+                }
+                newNode.next = (temp.next).next;
+                temp.next = newNode;
             }
         }
     }
-           
+
 }
